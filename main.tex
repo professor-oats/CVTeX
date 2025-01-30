@@ -1,0 +1,157 @@
+% Preamble
+\documentclass[12pt, letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor} % Required for color definitions
+\usepackage[margin=1in]{geometry} % Optional: Adjusts margins
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{amsmath,amssymb}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\titleformat{\section}
+  {\Large\bfseries\color{orange}} % Large, bold, and orange
+  {\thesection}{1em}{} % Keeps the section number
+
+\titleformat{\subsection}
+  {\large\bfseries\color{orange}} % Slightly smaller than section, bold, and orange
+  {\thesubsection}{1em}{}
+
+
+
+
+
+% Document info
+
+\title{
+\textbf{\LARGE
+{\textcolor{orange}{C V T e X}}}}
+
+\author{\textcolor{white}{J O H N N Y T E I C H T E R}}
+\date{\textcolor{white}{P e n t e s t e r{\includegraphics[width=0.1\textwidth]{pen}}}}
+
+% Page settings
+\pagecolor[HTML]{11181C}
+\definecolor{mypink1}{RGB}{17, 24, 28}
+
+
+
+% Document
+\begin{document}
+% Define box and box title style
+    \tikzstyle{mybox} = [draw=mypink1, line width=0pt,
+    rectangle, rounded corners=10pt, inner sep=0pt, inner ysep=0pt,
+    text centered]
+
+\maketitle
+    \begin{center}
+    \begin{tikzpicture}
+
+
+        \node [mybox] (box){
+          \includegraphics[width=0.4\textwidth]{1}
+        };
+        \begin{scope}[
+shift={(-3.08,4.2)}, rotate=131, scale=0.2
+]
+            \clip (-1,0)  circle (1.8)
+            (-2,-2) rectangle (2,2);
+            \fill[mypink1]  (1,0) circle (1.2)  (1,0) circle (2);
+        \end{scope}
+        \begin{scope}[
+            shift={(3.08,4.2)}, rotate=48, scale=0.2
+        ]
+            \clip (-1,0)  circle (1.8)
+            (-2,-2) rectangle (2,2);
+            \fill[mypink1]  (1,0) circle (1.2)  (1,0) circle (2);
+        \end{scope}
+        \begin{scope}[
+            shift={(-3.1,-4.2)}, rotate=227, scale=0.2
+        ]
+            \clip (-1,0)  circle (1.8)
+            (-2,-2) rectangle (2,2);
+            \fill[mypink1]  (1,0) circle (1.2)  (1,0) circle (2);
+        \end{scope}
+        \begin{scope}[
+            shift={(3.08,-4.2)}, rotate=312, scale=0.2
+        ]
+            \clip (-1,0)  circle (1.8)
+            (-2,-2) rectangle (2,2);
+            \fill[mypink1]  (1,0) circle (1.2)  (1,0) circle (2);
+        \end{scope}
+
+    \end{tikzpicture}
+    \end{center}
+    \begin{center}
+
+    \texttt{
+    \Large\textcolor{white}{\href{https://github.com/professor-oats}{professor-oats@github} \\
+    - \\ - \\
+    "Take risks. Unless it's security risks."}
+    }
+    \end{center}
+
+    \section{Website}\label{sec:website}
+      \texttt{\Large\textcolor{white}{\href{https://professor-oats.github.io/mysite-deploy/}{My React App}}}
+
+
+    \section{Education}\label{sec:education}
+    \subsection{Current: ITHS Pentester 2024-2026}\label{subsec:current}
+      \texttt{\textcolor{white}{A wide span of computer networking, programming and pentesting against Active Directory and Web. Finishing with a 6 months workplace education + examination}}
+    \subsection{Online courses + self studies 2021-2024}\label{subsec:old}
+      \texttt{\textcolor{white}{Hitting books and docs to push skill levels in the areas of development I like, mentions:
+      \begin{itemize}
+        \item freeCodeCamp Javascript Course 300 hours
+        \item Online Courses of React and Node.js for Fullstack E-commerce
+        \item NVIDIA - Ray Tracing In One Weekend - The Book Series
+        \item Packt Publishing - Game Development, specifically OGRE
+        \item Bjarne Stroustrup - The C++ Programming Language
+        \item Craig Larman - Applying UML and Patterns
+        \item Cybersecurity books by Christopher Hadnagy and Kevin Mitnick
+      \end{itemize}
+      }}
+    \subsection{Chalmers Technical University 2010-2013}\label{subsec:old2}
+      \texttt{\textcolor{white}{Mechatronics - 3 years of studies (no exam) \\
+      Nisched towards Robotics and Programming of microprocessors as well as Mechanics and Electronics to back it up
+      }}
+    \subsection{Sven Erikson Secondary Elementary 2007-2010}\label{subsec:old3}
+      \texttt{\textcolor{white}{Global Programme of Technology \\Technologics with additional courses in Nature Science
+      }}
+
+    \section{Work Experience}\label{sec:work}
+    \subsection{Any job 2021-2024}\label{subsec:job1}
+      \texttt{\textcolor{white}{Applied for jobs towards Software/System Development/IT \\
+      Through the contacts gained I was told to get an exam to prove performant of workload and consistency. \\
+      Here is a list of job positions I had in meantime:
+      \begin{itemize}
+        \item Intern Customers Service
+        \item Trial recruitment mobile and computer service
+        \item Cleaner at Elementary School
+        \item Intern Shoemaker
+        \item Coordinate Analyst for Apple Maps
+        \item Search Engine Result Evaluator
+        \item ServiceDesk
+      \end{itemize}
+      }}
+    \subsection{Teleperformance Nordic 2021}\label{subsec:job2}
+      \texttt{\textcolor{white}{Project employment 6 months abroad as Sales Agent in Customers Service \\
+      Main area was to guide customers on their subscriptions, offer sales and forward technical errands
+      }}
+    \subsection{Company 2018}\label{subsec:job3}
+      \texttt{\textcolor{white}{Warehouse Worker \\
+      Packaging goods in freezer
+      }}
+    \subsection{Prevent Safety Solutions Seasonal 201710xx}\label{subsec:job4}
+      \texttt{\textcolor{white}{Fireguard at oil company \\
+      Gained workplace education when working with flammables and in high risk production
+      }}
+    \subsection{Storesupport AB 2012-2013}\label{subsec:job5}
+      \texttt{\textcolor{white}{Warehouse Worker/Truck Driver \\
+      Packaging goods and loading transports
+      }}
+    \subsection{Global Expansion AB Summer 2011}\label{subsec:job6}
+      \texttt{\textcolor{white}{Canvas Salesman of telecom products
+      }}
+
+
+\end{document}
