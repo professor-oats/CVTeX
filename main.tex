@@ -19,8 +19,6 @@
 
 
 
-
-
 % Document info
 
 \title{
@@ -32,8 +30,9 @@
 
 % Page settings
 \pagecolor[HTML]{11181C}
+%\pagestyle{plain}
+\renewcommand{\thepage}{\textcolor{white}{\arabic{page}}}  % Change to white page numbers
 \definecolor{mypink1}{RGB}{17, 24, 28}
-
 
 
 % Document
@@ -86,20 +85,31 @@ shift={(-3.08,4.2)}, rotate=131, scale=0.2
 
     \texttt{
     \Large\textcolor{white}{\href{https://github.com/professor-oats}{professor-oats@github} \\
-    - \\ - \\
+    \textcolor{mypink1}{- \\ - \\}
     "Take risks. Unless it's security risks."}
-    }
+    } \\ \textcolor{mypink1}- \\
+    \texttt{\Large\textcolor{white}{My React App \\ \textcolor{mypink1}- \\ \href{https://professor-oats.github.io/mysite-deploy/}{\includegraphics[width=0.1\textwidth]{react}}}}
     \end{center}
 
-    \section{Website}\label{sec:website}
-      \texttt{\Large\textcolor{white}{\href{https://professor-oats.github.io/mysite-deploy/}{My React App}}}
-
+    \section{Skillset}\label{sec:skills}
+      \texttt{\textcolor{white}{Heavy on the frontend tech stack, React and Three.js to mention. \\
+      Graphical programming is my favorite so a lot of things end up in pixel pushing, shaders and visual hacks. \\[0.4cm]
+      Latest addition to the stack of skills is Python for network manipulation and API consumption \\[0.4cm]
+      Know my way around computers and computer networks and can standard use many systems and different architectural solutions: \\
+      \begin{itemize}
+        \item Windows, *nix, FreeBSD, MacOS
+        \item Git, Docker
+        \item Virtualisation Technologies - Both pseudo with userland environments + Full
+        \item Penetration testing against networks and web applications
+        \item Safe usage and storage of Data to prohibit Data leaks \includegraphics[width=0.06\textwidth]{leek} \\ and mantain confidentiality
+      \end{itemize}
+      }}
 
     \section{Education}\label{sec:education}
     \subsection{Current: ITHS Pentester 2024-2026}\label{subsec:current}
       \texttt{\textcolor{white}{A wide span of computer networking, programming and pentesting against Active Directory and Web. Finishing with a 6 months workplace education + examination}}
     \subsection{Online courses + self studies 2021-2024}\label{subsec:old}
-      \texttt{\textcolor{white}{Hitting books and docs to push skill levels in the areas of development I like, mentions:
+      \texttt{\textcolor{white}{Hitting books and docs to push skill levels in the areas of development I like, mentions: \\
       \begin{itemize}
         \item freeCodeCamp Javascript Course 300 hours
         \item Online Courses of React and Node.js for Fullstack E-commerce
@@ -122,7 +132,7 @@ shift={(-3.08,4.2)}, rotate=131, scale=0.2
     \subsection{Any job 2021-2024}\label{subsec:job1}
       \texttt{\textcolor{white}{Applied for jobs towards Software/System Development/IT \\
       Through the contacts gained I was told to get an exam to prove performant of workload and consistency. \\
-      Here is a list of job positions I had in meantime:
+      Here is a list of job positions I had in meantime: \\
       \begin{itemize}
         \item Intern Customers Service
         \item Trial recruitment mobile and computer service
