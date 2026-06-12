@@ -1,0 +1,90 @@
+\documentclass[10pt, a4paper]{article}
+
+% Preamble
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage{geometry} % For page margins
+\usepackage{fontspec}
+% \geometry{a4paper, margin=1in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+\usepackage{lipsum} % For filler text
+\usepackage{changepage} %For Indenting
+\usepackage{graphicx}
+
+% Page settings
+\pagecolor{white}
+\color{black}
+\setmainfont{TeX Gyre Termes}
+
+% Margins
+\geometry{
+  top=1cm,
+  bottom=2.5cm,
+  left=1.4cm,
+  right=1.4cm
+}
+
+% Sections style
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{0em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+\newenvironment{subs} %Indenting
+  {\adjustwidth{2em}{0pt}}
+  {\endadjustwidth}
+  
+% Commands
+\renewcommand{\labelitemi}{\scalebox{1}{$\bullet$}}  
+
+
+\begin{document}
+\begin{center}
+\textbf{Johnny Teichter}\\
+\texttt{Gothenburg|(+46)722127856|teichohn@gmail.com}
+\end{center}
+\section*{EDUCATION}
+\texttt{}\\[-0.5cm]
+\textbf{IT Högskolan} \hfill Stockholm, Remote\\
+\noindent\makebox[\textwidth][r]{May 2026}\\
+\textit{Higher Vocational Degree in Penetration Testing}
+
+\section*{EXPERIENCE}
+\texttt{}\\[-0.5cm]
+\textbf{Enclave AB} \hfill Stockholm, Remote\\
+\noindent\makebox[\textwidth][r]{October 2025 - May 2026}\\
+\textit{Infrastructure Lead Developer}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Building a single node air-gapped Kubernetes cluster of cloud native applications.
+\item Used helm template to set up and customise Vault, Gitlab CE, Nextcloud AIO, VLLM and more.
+\item Decided the methods to use for dev team, made a project plan and set goals + milestones.
+\item Researched AI Assisted clusters and wrote maintenance scripts for the environment.
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{Mekonomen Group} \hfill Östersund, Jämtland\\
+\noindent\makebox[\textwidth][r]{March 2024 - April 2024}\\
+\textit{Customers Service Agent}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Intern due to hiring stop, answered on emails three hours per day and was assigned internal portal studies the rest.
+\item Found critical vulnerabilities in the portal and reported them to the team. 
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{Alina Service} \hfill Östersund, Jämtland\\
+\noindent\makebox[\textwidth][r]{January 2024}\\
+\textit{Technical Repair Shop Assistant}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Trial work week in role selection process. Did memtest, refurbish of hardware, software reinstallations/updates/fixes + cashier work. 
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{OneForma} \hfill Östersund, Remote\\
+\noindent\makebox[\textwidth][r]{2023}\\
+\textit{Search Engine Result Analyst}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Analysing data bulks from Google and Bing engines and ranking results based on relevance and locality of the queries. 
+\end{itemize}
+\texttt{}\\[-0.5cm]
+\section*{SKILLS \& CERTIFICATIONS}
+\texttt{}\\[-0.5cm]
+\textbf{Skills:} C, C++, Python, JavaScript, Bash, AI Agentics, NodeJS + React, HTML, CSS, YAML, TeX, XML\\
+\textbf{Certifications:} freeCodeCamp Javascript Algorithms and Data Structures
+\end{document}

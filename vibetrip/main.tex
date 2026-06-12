@@ -1,0 +1,395 @@
+\documentclass[10pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENGINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontspec}
+\usepackage{luacolor}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GRAPHICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{
+calc,
+shadows.blur,
+backgrounds,
+positioning,
+decorations.pathmorphing
+}
+
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{transparent}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+top=1.3cm,
+bottom=1.3cm,
+left=1.5cm,
+right=1.5cm
+]{geometry}
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{acidpink}{HTML}{FF0088}
+\definecolor{neonblue}{HTML}{00F0FF}
+\definecolor{limeburn}{HTML}{9DFF00}
+\definecolor{violettrip}{HTML}{B300FF}
+\definecolor{sunburst}{HTML}{FFB000}
+\definecolor{spaceblack}{HTML}{050505}
+
+\pagecolor{spaceblack}
+\color{white}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FONTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setmainfont{TeX Gyre Termes}
+
+\newfontfamily\headfont{TeX Gyre Heros}
+\newfontfamily\mono{Roboto Mono Light}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HYPERLINKS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+colorlinks=true,
+urlcolor=neonblue,
+linkcolor=acidpink
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION STYLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}
+{\Huge\headfont\bfseries\color{limeburn}}
+{}
+{0pt}
+{}
+[]
+
+\titlespacing*{\section}
+{0pt}
+{1.3em}
+{0.4em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlist[itemize]{
+leftmargin=5mm,
+itemsep=2pt
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DECORATIVE BACKGROUND
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AddToShipoutPictureBG{
+
+\begin{tikzpicture}[remember picture,overlay]
+
+% giant glowing circles
+
+\fill[
+violettrip,
+opacity=.12
+]
+(current page.north west)
+circle (8cm);
+
+\fill[
+acidpink,
+opacity=.10
+]
+(current page.south east)
+circle (7cm);
+
+\fill[
+neonblue,
+opacity=.08
+]
+(current page.center)
+circle (5cm);
+
+% psychedelic rings
+
+\foreach \r in {1,...,18}
+{
+\draw[
+neonblue,
+opacity=.04,
+line width=.8pt
+]
+(current page.center)
+circle (\r*0.8cm);
+}
+
+% floating title ghost
+
+\node[
+rotate=24,
+scale=10,
+text opacity=.05,
+color=acidpink
+]
+at ($(current page.center)+(0,3)$)
+{CYBER};
+
+\node[
+rotate=-12,
+scale=8,
+text opacity=.04,
+color=limeburn
+]
+at ($(current page.center)+(1,-4)$)
+{OPS};
+
+\end{tikzpicture}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\psysection}[1]{
+\vspace{0.5em}
+
+{\Huge
+\headfont
+\bfseries
+\textcolor{limeburn}{#1}}
+
+\vspace{0.25em}
+
+{\color{acidpink}
+\rule{\linewidth}{1.5pt}}
+
+\vspace{0.5em}
+}
+
+\newcommand{\job}[4]{
+\vspace{0.7em}
+
+{\Large\bfseries\color{sunburst} #1}
+
+\hfill
+
+{\color{neonblue} #2}
+
+\vspace{0.15em}
+
+{\itshape\color{acidpink} #3}
+
+\hfill
+
+{\color{limeburn} #4}
+
+\vspace{0.25em}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+
+{\fontsize{42}{42}\selectfont
+\headfont
+\bfseries
+\textcolor{acidpink}{JOHNNY}}
+
+\vspace{-0.3em}
+
+{\fontsize{42}{42}\selectfont
+\headfont
+\bfseries
+\textcolor{neonblue}{TEICHTER}}
+
+\vspace{0.5em}
+
+{\mono
+\color{limeburn}
+GOTHENBURG
+\textbullet\
+(+46)722127856
+\textbullet\
+teichohn@gmail.com}
+
+\end{center}
+
+\vspace{1em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MANIFESTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tikzpicture}
+
+\node[
+fill=violettrip!20,
+draw=acidpink,
+rounded corners=4pt,
+inner sep=8pt,
+text width=\linewidth-2em
+]
+{
+\centering
+\Large
+Infrastructure Builder \textbullet\
+Pentester \textbullet\
+Automation Enthusiast \textbullet\
+AI Systems Explorer
+};
+
+\end{tikzpicture}
+
+\vspace{1em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDUCATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\psysection{EDUCATION}
+
+\job
+{IT Högskolan}
+{Stockholm / Remote}
+{Higher Vocational Degree in Penetration Testing}
+{May 2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EXPERIENCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\psysection{EXPERIENCE}
+
+\job
+{ENCLAVE AB}
+{Stockholm / Remote}
+{Infrastructure Lead Developer}
+{Oct 2025 -- May 2026}
+
+\begin{itemize}
+\item Built air-gapped Kubernetes environments.
+\item Deployed Vault, GitLab CE, Nextcloud, vLLM.
+\item Defined engineering processes and milestones.
+\item Researched AI-assisted infrastructure.
+\end{itemize}
+
+\job
+{MEKONOMEN GROUP}
+{Östersund}
+{Customer Service Agent}
+{Mar 2024 -- Apr 2024}
+
+\begin{itemize}
+\item Customer communication and portal studies.
+\item Reported critical portal vulnerabilities.
+\end{itemize}
+
+\job
+{ALINA SERVICE}
+{Östersund}
+{Technical Repair Shop Assistant}
+{Jan 2024}
+\begin{itemize}
+\item Hardware diagnostics and refurbishment.
+\item Software installation and troubleshooting.
+\end{itemize}
+
+\job
+{ONEFORMA}
+{Remote}
+{Search Engine Result Analyst}
+{2023}
+
+\begin{itemize}
+\item Evaluated ranking quality for search engines.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\psysection{SKILLS}
+
+\begin{center}
+
+{\Huge
+\color{neonblue}
+C
+\quad
+\color{acidpink}
+C++
+\quad
+\color{limeburn}
+Python
+\quad
+\color{sunburst}
+JavaScript}
+
+\vspace{0.5em}
+
+{\Large
+NodeJS
+\quad
+React
+\quad
+Kubernetes
+\quad
+Bash
+\quad
+TeX
+\quad
+AI Agents}
+
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CERTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\psysection{CERTIFICATIONS}
+
+{\Large
+\color{violettrip}
+freeCodeCamp:
+JavaScript Algorithms and Data Structures}
+
+\vfill
+
+\begin{center}
+{\transparent{0.3}
+\Huge
+\headfont
+THE NETWORK IS THE RESUME
+}
+\end{center}
+
+\end{document}
