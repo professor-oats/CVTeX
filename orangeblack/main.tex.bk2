@@ -42,7 +42,7 @@ rectangle
 \fill[accent]
 (current page.north west)
 rectangle
-([yshift=-2.0cm]current page.north east);
+([yshift=-3cm]current page.north east);
 
 % Right stripe
 %\fill[accent]
@@ -97,14 +97,14 @@ rectangle
 
 % Decorative frame
 \draw[white, line width=0.4pt, opacity=0.7]
-([xshift=1.1cm,yshift=-2.4cm]NW)
--- ([xshift=1.1cm,yshift=-7.6cm]NW)
--- ([xshift=2.6cm,yshift=-7.6cm]NW);
+([xshift=2cm,yshift=-1.5cm]NW)
+-- ([xshift=2cm,yshift=-7.8cm]NW)
+-- ([xshift=5.5cm,yshift=-7.8cm]NW);
 
 \draw[white, line width=0.4pt, opacity=0.7]
-([xshift=1.1cm,yshift=-2.4cm]NW)
--- ([xshift=6.0cm,yshift=-2.4cm]NW)
--- ([xshift=6.0cm,yshift=-2.4cm]NW);
+([xshift=2cm,yshift=-1.5cm]NW)
+-- ([xshift=5.5cm,yshift=-1.5cm]NW)
+-- ([xshift=5.5cm,yshift=-2.8cm]NW);
 
 % Name
 \node[
@@ -113,7 +113,7 @@ text=accent,
 font=\fontsize{30}{30}\bfseries,
 align=left
 ]
-at ([xshift=1.5cm,yshift=-3.9cm]NW)
+at ([xshift=2.8cm,yshift=-4.1cm]NW)
 {
 Johnny\\[-2mm]
 Teichter
@@ -125,7 +125,7 @@ anchor=west,
 text=gray!70,
 font=\fontsize{10}{12}\selectfont\bfseries
 ]
-at ([xshift=1.7cm,yshift=-5.2cm]NW)
+at ([xshift=3cm,yshift=-5.4cm]NW)
 {D E V E L O P E R \hspace{0.3em}};
 
 % Contact
@@ -135,18 +135,18 @@ text=gray!70,
 font=\large\bfseries,
 align=left
 ]
-at ([xshift=1.7cm,yshift=-6.4cm]NW)
+at ([xshift=3cm,yshift=-6.6cm]NW)
 {%
-\faEnvelope\ \hspace{0.6em} teichohn@gmail.com\\
-\faPhone\ \hspace{0.6em} +46722127856\\
-\faGithub\ \hspace{0.6em} github.com/professor-oats
+\faEnvelope\ \hspace{0.6em} email@example.com\\
+\faPhone\ \hspace{0.6em} +467222222\\
+\faGithub\ \hspace{0.6em} https://github.com/professor-oats
 };
 
 % QR code
 \node[
 anchor=west
 ]
-at ([xshift=17.5cm,yshift=-4.1cm]NW)
+at ([xshift=18cm,yshift=-4.5cm]NW)
 {
 \fcolorbox{white}{white}{
 \qrcode[height=2cm]{https://github.com/professor-oats}
@@ -154,9 +154,9 @@ at ([xshift=17.5cm,yshift=-4.1cm]NW)
 };
 
 \end{tikzpicture}
-\vspace*{6.8cm}
+\vspace*{7.4cm}
 \section{Profile}
-\begin{adjustwidth}{1.1cm}{1.1cm}
+\begin{adjustwidth}{1.1cm}{0cm}
 {\mono\selectfont
 \color{white}
 \fontsize{11}{13}\selectfont
@@ -168,7 +168,7 @@ Love research and learning about new and old technology.}
 \section{Experience}
 \begin{adjustwidth}{1.1cm}{1.1cm}
 \scshape\color{white}{
-\textbf{\large{Enclave AB}} \hspace*{12.62cm} Stockholm, Remote\\
+\textbf{\large{Enclave AB}} \hspace*{11.62cm} Stockholm, Remote\\
 \makebox[\dimexpr\textwidth-2.18cm\relax][r]{October 2025 - May 2026}\\
 \textit{Infrastructure Lead Developer}\\
 }
@@ -177,15 +177,15 @@ Love research and learning about new and old technology.}
 \fontsize{11}{13}\selectfont
 \emph{%
 \begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
-\item Built a single node air-gapped Kubernetes cluster of cloud native applications.
+\item Building a single node air-gapped Kubernetes cluster of cloud native applications.
 \item Used helm template to set up and customise Vault, Gitlab CE, Nextcloud AIO, VLLM and more.
 \item Decided the methods to use for dev team, made a project plan and set goals + milestones.
 \item Researched AI Assisted clusters and wrote maintenance scripts for the environment.
 \end{itemize}}
 }
-\texttt{}\\[0.1cm]
+\texttt{}\\[-0.2cm]
 \scshape\color{white}{
-\textbf{\large{Mekonomen Group}} \hspace*{10.55cm} Östersund, Jämtland\\
+\textbf{\large{Mekonomen Group}} \hspace*{10.05cm} Östersund, Jämtland\\
 \makebox[\dimexpr\textwidth-2.18cm\relax][r]{March 2024 - April 2024}\\
 \textit{Customers Service Agent}\\
 }
@@ -194,12 +194,12 @@ Love research and learning about new and old technology.}
 \fontsize{11}{13}\selectfont
 \emph{%
 \begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
-\item Intern due to hiring stop, answered emails three hours per day and was assigned internal portal studies the rest.
+\item Intern due to hiring stop, answered on emails three hours per day and was assigned internal portal studies the rest.
 \item Found critical vulnerabilities in the portal and reported them to the team. 
 \end{itemize}}
 }
-\texttt{}\\[0.1cm]
-\textbf{\large{Alina Service}} \hspace*{12.01cm} Östersund, Jämtland\\
+\texttt{}\\[-0.2cm]
+\textbf{\large{Alina Service}} \hspace*{11.62cm} Östersund, Jämtland\\
 \makebox[\dimexpr\textwidth-2.18cm\relax][r]{January 2024}\\
 \textit{Technical Repair Shop Assistant}\\
 {\mono\selectfont
@@ -210,8 +210,8 @@ Love research and learning about new and old technology.}
 \item Trial work week in role selection process. Did memtest, refurbish of hardware, software reinstallations/updates/fixes + cashier work. 
 \end{itemize}}
 }
-\texttt{}\\[0.1cm]
-\textbf{\large{OneForma}} \hspace*{13.0cm} Östersund, Remote\\
+\texttt{}\\[-0.2cm]
+\textbf{\large{OneForma}} \hspace*{12.22cm} Östersund, Remote\\
 \makebox[\dimexpr\textwidth-2.18cm\relax][r]{2023}\\
 \textit{Search Engine Result Analyst}\\
 {\mono\selectfont
@@ -235,90 +235,13 @@ Love research and learning about new and old technology.}
 % =========================
 
 \vspace*{2cm}
-\section{Education}
-\begin{adjustwidth}{1.1cm}{1.1cm}
-\scshape\color{white}{
-\textbf{\large{IT Högskolan}} \hspace*{12.22cm} Stockholm, Remote\\
-\makebox[\dimexpr\textwidth-2.18cm\relax][r]{May 2026}\\
-\textit{Higher Vocational Degree in Penetration Testing}\\
-}
-\end{adjustwidth}
-\section{Skills \& Certifications}
-\begin{adjustwidth}{1.1cm}{1.1cm}
-\scshape\color{white}{
-\textbf{\large{Skills:}}}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-C, C++, Python, JavaScript, Bash, AI Agentics, NodeJS + React, HTML, CSS, YAML, TeX, XML}
-}
-\texttt{}\\[0.2cm]
-\hspace*{-0.28cm}
-\scshape\color{white}{
-\textbf{\large{Systems:}}}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-Windows, *nix, Kubernetes}
-}
-\texttt{}\\[0.2cm]
-\hspace*{-0.28cm}
-\scshape\color{white}{
-\textbf{\large{Certifications:}}}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-freeCodeCamp Javascript Algorithms and Data Structures}
-}
-\texttt{}\\[0.2cm]
-\hspace*{-0.28cm}
-\scshape\color{white}{
-\textbf{\large{Courses:}}}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-Operating System Harderning}
-}
-\texttt{}\\[0.2cm]
-\hspace*{-0.28cm}
-\scshape\color{white}{
-\textbf{\large{Languages:}}}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-Swedish, English}
-}
-\end{adjustwidth}
-\section{Projects @ github}
-\begin{adjustwidth}{1.1cm}{1.1cm}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-Current projects are a mix of different PoCs and QoL tools for work or hobby purposes. Two better showcases of coding knowledge I can think of is the React app "DigitalHippo", following @joshtriedcoding\\[0.2cm] 
-- Websites/tree/main/DigitalHippo\\[0.4cm]
-And the repetition of \textit{Ray Tracing in One Weekend - The Book Series}, Peter Shirley\\[0.2cm]
-- RepetitionRaytracer
-}
-}
-\end{adjustwidth}
-\section{Work Qualities}
-\begin{adjustwidth}{1.1cm}{1.1cm}
-{\mono\selectfont
-\color{white}
-\fontsize{11}{13}\selectfont
-\emph{%
-In Developer role I value a structured development process with clear goals and timeline with strive to apply an iterative process.
-During the two Duo Projects I have had part in these qualities put me in leading position of ensuring a steady workflow, also
-to help colleagues with project or work structure through consultation or project planning.\\[0.4cm]
-As a colleague I adhere to the needs of the team, communicate, and adjust the role accordingly, unless given. I get motivated by being assigned responsibility over tasks
-from start to full completion, and by being helpful and positive towards co-operative work. I chip in extra effort to ease workload if it helps the growth of an individual or the team reaching the goals set.}
-}
-\end{adjustwidth}
+
+\begin{minipage}[t]{0.42\textwidth}
+Left column content
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.42\textwidth}
+Right column content
+\end{minipage}
 
 \end{document}

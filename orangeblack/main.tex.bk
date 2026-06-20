@@ -10,6 +10,7 @@ top=0cm,
 bottom=0cm
 ]{geometry}
 \usepackage{qrcode}
+\usepackage{fontawesome5}
 
 % Commands
 
@@ -43,6 +44,8 @@ bottom=0cm
 %\definecolor{mydarkgray}{HTML}{2D2D2D}
 \definecolor{mydarkgray}{HTML}{292A2E}
 
+% CV Background
+
 
 % Coordinates
 
@@ -67,7 +70,7 @@ rectangle
 
 % Right stripe
 \fill[accent]
-    ([xshift=\paperwidth-2cm,yshift=-20cm]NW)
+    ([xshift=\paperwidth-1.8cm,yshift=-14cm]NW)
     rectangle
     ([xshift=\paperwidth,yshift=0cm-\paperheight]NW);
     
@@ -79,11 +82,11 @@ rectangle
 ]
 ([xshift=2.0cm,yshift=-2.5cm]NW)
 --
-([xshift=2.0cm,yshift=-8.5cm]NW)
+([xshift=2.0cm,yshift=-8.8cm]NW)
 --
-([xshift=5.5cm,yshift=-8.5cm]NW)
+([xshift=5.5cm,yshift=-8.8cm]NW)
 --
-([xshift=5.5cm,yshift=-7.0cm]NW);
+([xshift=5.5cm,yshift=-8.8cm]NW);
 
 \draw[
     white,
@@ -117,6 +120,21 @@ font=\fontsize{8}{10}\selectfont
 at ([xshift=3.0cm,yshift=-6.4cm]NW)
 {{\fontseries{b}\selectfont D A T A \hspace{0.3em} D U D E}};
 
+% Contact
+% Contact
+\node[
+    anchor=west,
+    text=gray!70,
+    font=\large\bfseries,
+    align=left
+]
+at ([xshift=3.0cm,yshift=-7.6cm]NW)
+{%
+\faEnvelope\ \hspace{0.6em} email@example.com\\[1mm]
+\faPhone\ \hspace{0.6em} +467222222\\[1mm]
+\faGithub \hspace{0.6em} https://github.com/professor-oats
+};
+
 % QR
 \node[
 anchor=west,
@@ -133,9 +151,12 @@ at ([xshift=18.0cm,yshift=-5.5cm]NW)
 \node[
     text=white,
     opacity=0.05,
-    font=\fontsize{140}{140}\bfseries
+    font=\fontsize{140}{140}\bfseries,
+    scale=1,
+    yscale=1.2,
+    xscale=1
 ]
-at ([xshift=10cm,yshift=-9cm]NW)
+at ([xshift=10.5cm,yshift=-11cm]NW)
 {
 RESUME
 };
