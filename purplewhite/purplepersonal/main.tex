@@ -1,0 +1,226 @@
+\documentclass[10pt, a4paper]{article}
+
+% Preamble
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage{geometry} % For page margins
+\usepackage{fontspec}
+% \geometry{a4paper, margin=1in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+\usepackage{lipsum} % For filler text
+\usepackage{changepage} %For Indenting
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{fontawesome5}
+\usepackage{qrcode}
+
+% Page settings
+\pagecolor{white}
+\color{black}
+\setmainfont{TeX Gyre Termes}
+\definecolor{accent}{HTML}{6F5392}
+
+% Margins
+\geometry{
+  top=1cm,
+  bottom=2.5cm,
+  left=1.4cm,
+  right=1.4cm
+}
+
+% Sections style
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{0em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+\newenvironment{subs} %Indenting
+  {\adjustwidth{2em}{0pt}}
+  {\endadjustwidth}
+  
+% Commands
+\renewcommand{\labelitemi}{\scalebox{1}{$\bullet$}}  
+
+% =========================
+% BACKGROUND (ALL PAGES)
+% =========================
+
+\newcommand{\CVBackground}{
+\begin{tikzpicture}[remember picture,overlay]
+
+% White background
+\fill[white]
+(current page.north west)
+rectangle
+(current page.south east);
+
+% Purple top banner
+\fill[accent]
+(current page.north west)
+rectangle
+([yshift=-2.0cm]current page.north east);
+
+% Right stripe
+%\fill[accent]
+%    ([xshift=\paperwidth-1.0cm,yshift=-14cm]NW)
+%    rectangle
+%    ([xshift=\paperwidth,yshift=0cm-\paperheight]NW);  
+
+% Faded watermark
+%\node[
+%    text=white,
+%    opacity=0.05,
+%    font=\fontsize{140}{140}\bfseries,
+%    yscale=1.2
+%]
+%at ([xshift=10.5cm,yshift=-11cm]current page.north west)
+%{RESUME};
+
+\end{tikzpicture}
+}
+
+% Apply background to ALL pages
+\AddToShipoutPictureBG{\CVBackground}
+
+% Begin Document
+\begin{document}
+
+% =========================
+% PAGE 1 FOREGROUND ONLY
+% =========================
+
+\begin{tikzpicture}[remember picture,overlay]
+
+\coordinate (NW) at (current page.north west);
+
+% Decorative frame
+\draw[white, line width=0.4pt, opacity=1.0]
+([xshift=1.1cm,yshift=-2.4cm]NW)
+-- ([xshift=1.1cm,yshift=-7.6cm]NW)
+-- ([xshift=2.6cm,yshift=-7.6cm]NW);
+
+\draw[white, line width=0.4pt, opacity=1.0]
+([xshift=1.1cm,yshift=-2.4cm]NW)
+-- ([xshift=6.0cm,yshift=-2.4cm]NW)
+-- ([xshift=6.0cm,yshift=-2.4cm]NW);
+
+% Name
+\node[
+anchor=west,
+text=accent,
+font=\fontsize{30}{30}\bfseries,
+align=left
+]
+at ([xshift=1.5cm,yshift=-3.9cm]NW)
+{
+Johnny\\[-2mm]
+Teichter
+};
+
+% Tagline
+\node[
+anchor=west,
+text=black!70,
+font=\fontsize{10}{12}\selectfont\bfseries
+]
+at ([xshift=1.7cm,yshift=-5.2cm]NW)
+{D E V E L O P E R \hspace{0.3em}};
+
+% Contact
+\node[
+anchor=west,
+text=black!70,
+font=\large\bfseries,
+align=left
+]
+at ([xshift=1.7cm,yshift=-6.4cm]NW)
+{%
+\faEnvelope\ \hspace{0.6em} teichohn@gmail.com\\
+\faPhone\ \hspace{0.6em} +46722127856\\
+\faGithub\ \hspace{0.6em} github.com/professor-oats
+};
+
+% QR code
+\node[
+anchor=west
+]
+at ([xshift=17.5cm,yshift=-4.1cm]NW)
+{
+\qrcode[height=2cm]{https://github.com/professor-oats}
+};
+
+\end{tikzpicture}
+\vspace*{6.2cm}
+\section*{PROFILE}
+\texttt{}\\[-0.5cm]
+Cybersec Examed Ed with passion for software and systems development.\\ 
+Love research and learning about new and old technology.
+\section*{EXPERIENCE}
+\texttt{}\\[-0.5cm]
+\textbf{Enclave AB} \hfill Stockholm, Remote\\
+\noindent\makebox[\textwidth][r]{October 2025 - May 2026}\\
+\textit{Infrastructure Lead Developer}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Built a single node air-gapped Kubernetes cluster of cloud native applications.
+\item Used helm template to set up and customise Vault, Gitlab CE, Nextcloud AIO, VLLM and more.
+\item Decided the methods to use for dev team, made a project plan and set goals + milestones.
+\item Researched AI Assisted clusters and wrote maintenance scripts for the environment.
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{Mekonomen Group} \hfill Östersund, Jämtland\\
+\noindent\makebox[\textwidth][r]{March 2024 - April 2024}\\
+\textit{Customers Service Agent}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Intern due to hiring stop, answered emails three hours per day and was assigned internal portal studies the rest.
+\item Found critical vulnerabilities in the portal and reported them to the team. 
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{Alina Service} \hfill Östersund, Jämtland\\
+\noindent\makebox[\textwidth][r]{January 2024}\\
+\textit{Technical Repair Shop Assistant}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Trial work week in role selection process. Did memtest, refurbish of hardware, software reinstallations/updates/fixes + cashier work.
+\end{itemize}
+\texttt{}\\[-0.2cm]
+\textbf{OneForma} \hfill Östersund, Remote\\
+\noindent\makebox[\textwidth][r]{2023}\\
+\textit{Search Engine Result Analyst}\\
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Analysing data bulks from Google and Bing engines and ranking results based on relevance and locality of the queries. 
+\end{itemize}
+\section*{EDUCATION}
+\texttt{}\\[-0.5cm]
+\textbf{IT Högskolan} \hfill Stockholm, Remote\\
+\noindent\makebox[\textwidth][r]{May 2026}\\
+\textit{Higher Vocational Degree in Penetration Testing}
+\newpage
+\vspace*{1.4cm}
+\section*{SKILLS \& CERTIFICATIONS}
+\texttt{}\\[-0.5cm]
+\textbf{Skills:} C, C++, Python, JavaScript, Bash, AI Agentics, NodeJS + React, HTML, CSS, YAML, TeX, XML\\
+\textbf{Systems:} Windows, *nix, Kubernetes\\
+\textbf{Certifications:} freeCodeCamp Javascript Algorithms and Data Structures\\
+\textbf{Courses:} Operating System Harderning\\
+\textbf{Languages:} Swedish, English
+\section*{PROJECTS @ GITHUB}
+\texttt{}\\[-0.5cm]
+Current projects are a mix of different PoCs and QoL tools for work or hobby purposes.\\
+Two showcases of coding knowledge are the React app DigitalHippo, @joshtriedcoding\\
+and the repetition of Ray Tracing in One Weekend - The Book Series, Peter Shirley
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item Websites/tree/main/DigitalHippo
+\item RepetitionRaytracer
+\end{itemize}
+To examine the graduate reports of the Penetration Testing education, visit the repo
+\begin{itemize}[leftmargin=0.3cm, itemsep=0.1cm]
+\item GOAD
+\end{itemize}
+\section*{WORK QUALITIES}
+\texttt{}\\[-0.5cm]
+In Developer role I value a structured development process with clear goals and timeline with strive to apply an iterative process.
+During the two Duo Projects I have had part in those qualities put me in leading position of ensuring a steady workflow, also
+to help colleagues with project or work structure through consultation or project planning.\\[0.2cm]
+As a colleague I adhere to the needs of the team, communicate, and adjust the role accordingly, unless given. I get motivated by being assigned responsibility over tasks
+from start to full completion, and by being helpful and positive towards co-operative work. I chip in extra effort to ease workload if it helps the growth of an individual or the team reaching the goals set.
+\end{document}
