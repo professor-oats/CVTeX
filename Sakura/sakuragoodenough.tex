@@ -1,0 +1,162 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{asymptote}
+
+\begin{document}
+\begin{asy}
+unitsize(1cm);
+
+// Rich palette matching the reference vector art
+pen barkDark = RGB(58, 38, 32);
+pen barkColor = RGB(78, 52, 44);
+pen barkLight = RGB(115, 80, 68);
+pen centerColor = RGB(150, 55, 85);
+pen[] sakura = {
+    RGB(255, 230, 238),
+    RGB(250, 205, 220),
+    RGB(242, 160, 188),
+    RGB(230, 110, 150),
+    RGB(205, 65, 115),
+    RGB(175, 40, 85)
+};
+
+// 1. Organic, Wide-Spanning Trunk
+guide trunk = (-0.5, 0.0) 
+    .. controls (-0.3, 1.0) and (-0.6, 2.2) .. (-0.3, 3.5)
+    .. controls ( 0.0, 4.2) and (-0.3, 4.8) .. (-0.1, 5.2)
+    .. controls ( 0.2, 4.8) and ( 0.4, 4.2) .. ( 0.2, 3.5)
+    .. controls ( 0.5, 2.2) and ( 0.2, 1.0) .. ( 0.4, 0.0)
+    .. controls ( 0.1,-0.2) and (-0.2,-0.2) .. cycle;
+
+fill(trunk, barkColor);
+
+// Detailed trunk grain lines restricted strictly to the lower half (y < 3.5)
+srand(2026);
+for (int i = 0; i < 40; ++i) {
+    real bx = (unitrand() - 0.5) * 0.6;
+    real by = unitrand() * 3.0 + 0.2; // Cut off early before branches
+    real bLen = unitrand() * 1.0 + 0.5;
+    draw((bx, by) .. controls (bx + (unitrand()-0.5)*0.15, by + bLen*0.5) .. (bx + (unitrand()-0.5)*0.25, by + bLen), 
+         barkLight + 0.6pt + opacity(0.6));
+}
+
+// Global storage for branch tips and key internal branch nodes
+pair[] branchTips;
+pair[] internalNodes;
+
+// 2. Advanced Recursive Branching
+void drawBranch(pair pos, real branchLen, real angle, real width, int depth) {
+    if (depth <= 2) {
+        internalNodes.push(pos);
+    }
+    if (depth <= 0 || branchLen < 0.2) {
+        branchTips.push(pos);
+        return;
+    }
+    
+    real bend = (unitrand() - 0.5) * 14;
+    real nextAngle = angle + bend;
+    pair endPos = pos + branchLen * dir(nextAngle);
+    
+    draw(pos .. controls (pos + branchLen*0.35*dir(angle)) and (pos + branchLen*0.65*dir(nextAngle+bend)) .. endPos, 
+         barkColor + width);
+         
+    real spread = 20 + unitrand() * 18;
+    real nextLen = branchLen * (0.62 + unitrand() * 0.12);
+    
+    drawBranch(endPos, nextLen, nextAngle - spread, width * 0.62, depth - 1);
+    drawBranch(endPos, nextLen * (0.85 + unitrand() * 0.2), nextAngle + spread, width * 0.58, depth - 1);
+}
+
+// Broad horizontal scaffold spanning wide
+drawBranch((0.0, 5.0), 3.2, 140, 4.8pt, 4);
+drawBranch((0.0, 5.0), 3.3,  40, 4.8pt, 4);
+drawBranch((-0.1, 4.8), 2.8, 115, 3.8pt, 4);
+drawBranch(( 0.1, 4.8), 2.9,  65, 3.8pt, 4);
+drawBranch(( 0.0, 5.1), 3.0,  90, 4.0pt, 4);
+
+// 3. Expanded Watercolor Soft Background Aura Clouds (4,500 particles for rich depth)
+for (int i = 0; i < 4500; ++i) {
+    pair anchor = branchTips[(int)(unitrand() * branchTips.length)];
+    real rDist = (unitrand() * 0.85 + 0.15) * 5.0;
+    real rAng = unitrand() * 360;
+    
+    real px = anchor.x + rDist * cos(rAng) * 1.5;
+    real py = anchor.y + rDist * sin(rAng) * 0.7 + 0.3 * rDist;
+    
+    real rad = unitrand() * 0.18 + 0.08;
+    pen col = sakura[(int)(unitrand() * 3)]; 
+    fill(shift(px, py) * scale(rad) * unitcircle, col + opacity(0.12));
+}
+
+// 4. Heavily Doubled and Draped Foliage Particles (40,000 petals with strong downward bias)
+for (int i = 0; i < 40000; ++i) {
+    pair anchor;
+    real roll = unitrand();
+    if (roll < 0.45) {
+        anchor = branchTips[(int)(unitrand() * branchTips.length)];
+    } else if (roll < 0.75) {
+        anchor = internalNodes[(int)(unitrand() * internalNodes.length)];
+    } else {
+        anchor = ( (unitrand() - 0.5) * 6.5, 6.2 + unitrand() * 1.8 );
+    }
+    
+    real rDist = (unitrand() * 0.85 + 0.1) * 3.8;
+    real rAng = unitrand() * 360;
+    
+    real px = anchor.x + rDist * cos(rAng) * 1.45;
+    // Heavy downward draping bias (extended downward scatter)
+    real py = anchor.y + rDist * sin(rAng) * 0.6 + (unitrand() * 0.6 - 0.25) * rDist;
+    
+    real rx = unitrand() * 0.028 + 0.012;
+    real ry = rx * (0.45 + unitrand() * 0.3);
+    real rot = unitrand() * 180;
+    
+    pen col = sakura[(int)(unitrand() * sakura.length)];
+    fill(shift(px, py) * rotate(rot) * scale(rx, ry) * unitcircle, col + opacity(0.78));
+}
+
+// 5. Detailed Blossom Function
+void drawBlossom(pair center, real size) {
+    real rot = unitrand() * 72;
+    for (int k = 0; k < 5; ++k) {
+        real ang = rot + k * 72;
+        pair bpos = center + size * 0.38 * dir(ang);
+        fill(shift(bpos) * rotate(ang) * scale(size * 0.85, size * 0.5) * unitcircle, sakura[1] + opacity(0.92));
+    }
+    fill(shift(center) * scale(size * 0.28) * unitcircle, centerColor);
+}
+
+// 6. Doubled Foreground Blossom Clusters (850 clusters heavily draping downwards)
+for (int i = 0; i < 850; ++i) {
+    pair anchor;
+    real roll = unitrand();
+    if (roll < 0.5) {
+        anchor = branchTips[(int)(unitrand() * branchTips.length)];
+    } else if (roll < 0.8) {
+        anchor = internalNodes[(int)(unitrand() * internalNodes.length)];
+    } else {
+        anchor = ( (unitrand() - 0.5) * 6.0, 6.5 + unitrand() * 1.5 );
+    }
+    
+    real rDist = unitrand() * 3.0;
+    real rAng = unitrand() * 360;
+    
+    real bx = anchor.x + rDist * cos(rAng) * 1.4;
+    real by = anchor.y + rDist * sin(rAng) * 0.5 + (unitrand() * 0.5 - 0.2) * rDist;
+    real bsz = unitrand() * 0.04 + 0.05;
+    
+    drawBlossom((bx, by), bsz);
+}
+
+// 7. Rich Cascade of 150 Falling Loose Petals Drifting Below Canopy
+for (int i = 0; i < 150; ++i) {
+    real fx = (unitrand() - 0.5) * 10.0;
+    real fy = unitrand() * 5.0 - 1.0;
+    real fsize = unitrand() * 0.035 + 0.02;
+    real frot = unitrand() * 180;
+    pen col = sakura[(int)(unitrand() * sakura.length)];
+    
+    fill(shift(fx, fy) * rotate(frot) * scale(2*fsize, fsize*0.4) * unitcircle, col + opacity(0.75));
+}
+\end{asy}
+\end{document}
