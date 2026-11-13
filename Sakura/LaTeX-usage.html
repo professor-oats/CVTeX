@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This file documents Asymptote, version 3.16-148.
+
+https://asymptote.sourceforge.io
+
+Copyright © 2004-2026 Andy Hammerlindl, John Bowman, and Tom Prince.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Lesser General Public License (see the
+file LICENSE in the top-level source directory).
+ -->
+<title>LaTeX usage (Asymptote: the Vector Graphics Language)</title>
+
+<meta name="description" content="LaTeX usage (Asymptote: the Vector Graphics Language)">
+<meta name="keywords" content="LaTeX usage (Asymptote: the Vector Graphics Language)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="General-Index.html" rel="index" title="General Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="User-modules.html" rel="next" title="User modules">
+<link href="Programming.html" rel="prev" title="Programming">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="LaTeX-usage">
+<div class="nav-panel">
+<p>
+Next: <a href="User-modules.html" accesskey="n" rel="next">User modules</a>, Previous: <a href="Programming.html" accesskey="p" rel="prev">Programming</a>, Up: <a href="index.html" accesskey="u" rel="up">Asymptote</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="General-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="LaTeX-usage-1"><span>7 LaTeX usage<a class="copiable-link" href="#LaTeX-usage-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-LaTeX-usage"></a>
+<a class="index-entry-id" id="index-asymptote_002esty"></a>
+
+<p><code class="code">Asymptote</code> comes with a convenient LaTeX style file
+<code class="code">asymptote.sty</code> (v1.36 or later required) that makes LaTeX
+<code class="code">Asymptote</code>-aware. Entering <code class="code">Asymptote</code> code
+directly into the LaTeX source file, at the point where it is
+needed, keeps figures organized and avoids the need to invent new file
+names for each figure. Simply add the line
+<code class="code">\usepackage{asymptote}</code> at the beginning of your file
+and enclose your <code class="code">Asymptote</code> code within a
+<code class="code">\begin{asy}...\end{asy}</code> environment. As with the
+LaTeX <code class="code">comment</code> environment, the <code class="code">\end{asy}</code> command
+must appear on a line by itself, with no trailing commands/comments.
+A blank line is not allowed after <code class="code">\begin{asy}</code>.
+</p>
+<p>The sample LaTeX file below, named <code class="code">latexusage.tex</code>, can
+be run as follows:
+</p><pre class="verbatim">latex latexusage
+asy latexusage-*.asy
+latex latexusage
+</pre>
+<p>or
+</p><pre class="verbatim">pdflatex latexusage
+asy latexusage-*.asy
+pdflatex latexusage
+</pre><p>To switch between using inline Asymptote code with <code class="code">latex</code> and
+<code class="code">pdflatex</code> you may first need to remove the files <code class="code">latexusage-*.tex</code>.
+</p>
+<a class="index-entry-id" id="index-latexmk"></a>
+<a class="index-entry-id" id="index-perl"></a>
+<p>An even better method for processing a LaTeX file with embedded
+<code class="code">Asymptote</code> code is to use the <code class="code">latexmk</code> utility from
+</p><blockquote class="quotation">
+<p><a class="url" href="http://mirror.ctan.org/support/latexmk/">http://mirror.ctan.org/support/latexmk/</a>
+</p></blockquote>
+<p>after putting the contents of
+<a class="url" href="https://raw.githubusercontent.com/vectorgraphics/asymptote/HEAD/doc/latexmkrc">https://raw.githubusercontent.com/vectorgraphics/asymptote/HEAD/doc/latexmkrc</a>
+in a file <code class="code">latexmkrc</code> in the same directory. The command
+</p><pre class="verbatim">latexmk -pdf latexusage
+</pre><p>will then call <code class="code">Asymptote</code> automatically, recompiling only the figures
+that have changed. Since each figure is compiled in a separate
+system process, this method also tends to use less memory.
+To store the figures in a separate directory named <code class="code">asy</code>, one can define
+</p><pre class="verbatim">\def\asydir{asy}
+</pre><p>in <code class="code">latexusage.tex</code>.
+External <code class="code">Asymptote</code> code can be included with
+<a class="index-entry-id" id="index-asyinclude"></a>
+</p><pre class="verbatim">\asyinclude[&lt;options&gt;]{&lt;filename.asy&gt;}
+</pre><p>so that <code class="code">latexmk</code> will recognize when the code is changed. Note that
+<code class="code">latexmk</code> requires <code class="code">perl</code>, available from <a class="url" href="https://www.perl.org/">https://www.perl.org/</a>.
+</p>
+<a class="index-entry-id" id="index-width"></a>
+<a class="index-entry-id" id="index-height"></a>
+<a class="index-entry-id" id="index-keepAspect-2"></a>
+<a class="index-entry-id" id="index-viewportwidth"></a>
+<a class="index-entry-id" id="index-viewportheight"></a>
+<a class="index-entry-id" id="index-attach-1"></a>
+<a class="index-entry-id" id="index-inline"></a>
+<p>One can specify <code class="code">width</code>, <code class="code">height</code>, <code class="code">keepAspect</code>,
+<code class="code">viewportwidth</code>, <code class="code">viewportheight</code>, <code class="code">attach</code>, and <code class="code">inline</code>.
+<code class="code">keyval</code>-style options to the <code class="code">asy</code> and <code class="code">asyinclude</code>
+environments.
+Three-dimensional <abbr class="acronym">PRC</abbr> files may either be embedded within
+the page (the default) or attached as annotated (but printable)
+attachments, using the <code class="code">attach</code> option and the <code class="code">attachfile2</code>
+(or older <code class="code">attachfile</code>) LaTeX package.
+The <code class="code">inline</code> option generates
+inline LaTeX code instead of <abbr class="acronym">EPS</abbr> or <abbr class="acronym">PDF</abbr>
+files. This makes 2D LaTeX symbols visible to the
+<code class="code">\begin{asy}...\end{asy}</code> environment.  In this mode,
+Asymptote correctly aligns 2D LaTeX symbols defined outside of
+<code class="code">\begin{asy}...\end{asy}</code>, but treats their size as zero; an
+optional second string can be given to <code class="code">Label</code> to provide an
+estimate of the unknown label size.
+</p>
+<p>Note that if the <code class="code">latex</code> TeX engine is used with the
+<code class="code">inline</code> option, labels might not show up in <abbr class="acronym">DVI</abbr>
+viewers that cannot handle raw <code class="code">PostScript</code> code. One can use
+<code class="code">dvips</code>/<code class="code">dvipdf</code> to produce <code class="code">PostScript</code>/<abbr class="acronym">PDF</abbr>
+output (we recommend using the modified version of <code class="code">dvipdf</code> in
+the <code class="code">Asymptote</code> patches directory, which accepts the <code class="code">dvips -z</code>
+hyperdvi option).
+</p>
+<p>Here now is <code class="code">latexusage.tex</code>:
+</p><pre class="verbatim">\documentclass[12pt]{article}
+
+% Use this form to include EPS (latex) or PDF (pdflatex) files:
+%\usepackage{asymptote}
+
+% Use this form with latex or pdflatex to include inline LaTeX code by default:
+\usepackage[inline]{asymptote}
+
+% Use this form with latex or pdflatex to create PDF attachments by default:
+%\usepackage[attach]{asymptote}
+
+% Enable this line to support the attach option:
+%\usepackage[dvips]{attachfile2}
+
+\begin{document}
+
+% Optional subdirectory for latex files (no spaces):
+\def\asylatexdir{}
+% Optional subdirectory for asy files (no spaces):
+\def\asydir{}
+
+\begin{asydef}
+// Global Asymptote definitions can be put here.
+settings.prc=true;
+import three;
+usepackage(&quot;bm&quot;);
+texpreamble(&quot;\def\V#1{\bm{#1}}&quot;);
+// One can globally override the default toolbar settings here:
+// settings.toolbar=true;
+\end{asydef}
+
+Here is a venn diagram produced with Asymptote, drawn to width 4cm:
+
+\def\A{A}
+\def\B{\V{B}}
+
+%\begin{figure}
+\begin{center}
+\begin{asy}
+size(4cm,0);
+pen colour1=red;
+pen colour2=green;
+
+pair z0=(0,0);
+pair z1=(-1,0);
+pair z2=(1,0);
+real r=1.5;
+path c1=circle(z1,r);
+path c2=circle(z2,r);
+fill(c1,colour1);
+fill(c2,colour2);
+
+picture intersection=new picture;
+fill(intersection,c1,colour1+colour2);
+clip(intersection,c2);
+
+add(intersection);
+
+draw(c1);
+draw(c2);
+
+//draw(&quot;$\A$&quot;,box,z1);              // Requires [inline] package option.
+//draw(Label(&quot;$\B$&quot;,&quot;$B$&quot;),box,z2); // Requires [inline] package option.
+draw(&quot;$A$&quot;,box,z1);            
+draw(&quot;$\V{B}$&quot;,box,z2);
+
+pair z=(0,-2);
+real m=3;
+margin BigMargin=Margin(0,m*dot(unit(z1-z),unit(z0-z)));
+
+draw(Label(&quot;$A\cap B$&quot;,0),conj(z)--z0,Arrow,BigMargin);
+draw(Label(&quot;$A\cup B$&quot;,0),z--z0,Arrow,BigMargin);
+draw(z--z1,Arrow,Margin(0,m));
+draw(z--z2,Arrow,Margin(0,m));
+
+shipout(bbox(0.25cm));
+\end{asy}
+%\caption{Venn diagram}\label{venn}
+\end{center}
+%\end{figure}
+
+Each graph is drawn in its own environment. One can specify the width
+and height to \LaTeX\ explicitly. This 3D example can be viewed
+interactively either with Adobe Reader or Asymptote's fast OpenGL-based
+renderer. To support {\tt latexmk}, 3D figures should specify
+\verb+inline=true+. It is sometimes desirable to embed 3D files as annotated
+attachments; this requires the \verb+attach=true+ option as well as the
+\verb+attachfile2+ \LaTeX\ package.
+\begin{center}
+\begin{asy}[height=4cm,inline=true,attach=false,viewportwidth=\linewidth]
+currentprojection=orthographic(5,4,2);
+draw(unitcube,blue);
+label(&quot;$V-E+F=2$&quot;,(0,1,0.5),3Y,blue+fontsize(17pt));
+\end{asy}
+\end{center}
+
+One can also scale the figure to the full line width:
+\begin{center}
+\begin{asy}[width=\the\linewidth,inline=true]
+pair z0=(0,0);
+pair z1=(2,0);
+pair z2=(5,0);
+pair zf=z1+0.75*(z2-z1);
+
+draw(z1--z2);
+dot(z1,red+0.15cm);
+dot(z2,darkgreen+0.3cm);
+label(&quot;$m$&quot;,z1,1.2N,red);
+label(&quot;$M$&quot;,z2,1.5N,darkgreen);
+label(&quot;$\hat{\ }$&quot;,zf,0.2*S,fontsize(24pt)+blue);
+
+pair s=-0.2*I;
+draw(&quot;$x$&quot;,z0+s--z1+s,N,red,Arrows,Bars,PenMargins);
+s=-0.5*I;
+draw(&quot;$\bar{x}$&quot;,z0+s--zf+s,blue,Arrows,Bars,PenMargins);
+s=-0.95*I;
+draw(&quot;$X$&quot;,z0+s--z2+s,darkgreen,Arrows,Bars,PenMargins);
+\end{asy}
+\end{center}
+\end{document}
+</pre><img class="image" src="./latexusage.png" alt="./latexusage">
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="User-modules.html">User modules</a>, Previous: <a href="Programming.html">Programming</a>, Up: <a href="index.html">Asymptote</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="General-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
